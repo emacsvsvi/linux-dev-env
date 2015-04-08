@@ -1,0 +1,75 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    Install my development environment setup."
+    echo "    This should be runnable at any time with no ill effects."
+    echo ""
+    echo "    Creates the needed .bashrc, .bash_profile, .emacs, and .hgrc files in home directory."
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+function updateRcLocal()
+{
+    read -p "Site info (canada, home, chile):  " siteid
+    read -p "What is your home directory(ex: /home/sparker):  " hd
+    echo export SITE=${siteid} > ~/.rc-local
+    echo >> ~/.rc-local
+    echo export DEV_HOME=${hd} >> ~/.rc-local
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+if [ ! -e ~/.rc-local ]; then
+    updateRcLocal
+else
+    if ! grep -Fxq DEV_HOME ~/.rc-local ; then
+        updateRcLocal
+    fi
+fi
+
+if [ -e /shared/sparker ]; then
+
+    if [ ! -e ~/dev-env ]; then
+        ln -s /shared/sparker/dev-env ~/dev-env
+    fi
+
+    if [ ! -e ~/shared ]; then
+        ln -s /shared/sparker ~/shared
+    fi
+fi
+
+olddir=~/old-`date +%y-%m-%d-%H-%M-%S`
+
+mkdir ${olddir}
+cp ~/.bashrc ${olddir}
+cp ~/.bash_profile ${olddir}
+cp ~/.emacs ${olddir}
+cp ~/.hgrc ${olddir}
+cp ~/.tmux.conf ${olddir}
+
+cp ~/dev-env/env/home-bashrc ~/.bashrc
+cp ~/dev-env/env/home-bash-profile ~/.bash_profile
+cp ~/dev-env/env/home-emacs ~/.emacs
+cp ~/dev-env/env/home-hgrc ~/.hgrc
+cp ~/dev-env/env/home-tmux ~/.tmux.conf
+
+# Update so that the maven 2 repo will point to the one I have in the shared directory.
+if [ ! -e ~/.m2 ]; then
+    mkdir ~/.m2
+    ln -s ~/shared/.m2/repository ~/.m2/repository
+else
+    echo "FYI:  The .m2 directory wasn't created because it already exists."
+fi
+

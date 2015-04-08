@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+# This is just to run a watch-server for cibil to catch a new inquiry event
+# from the cibil db and fire an event
+source ${DEV_HOME}/dev-env/env/projects/watch
+
+export PROJECT_NAME=cibil-watch-server
+export PROJECT_SHORT_NAME=cwatch-server
+
+# Override default
+export ORIG_DEPLOY_DIR=${DEPLOY_DIR}
+export DEPLOY_DIR=/home/sparker/apps/cibil-watch
+
+export IBF_HOME=${ORIG_DEPLOY_DIR}/watch-server/home
+export IBF_BASE=${DEPLOY_DIR}/${PROJECT_SHORT_NAME}/base

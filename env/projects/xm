@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME="Express Match"
+export PROJECT_SHORT_NAME=xm
+
+export BUILD_DIR=~/repos/express-match/
+export DEPLOY_DIR=~/apps
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/java8
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${DEPLOY_DIR}/em/bin PATH

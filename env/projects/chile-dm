@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export PROJECT_NAME="chile-dm"
+export PROJECT_SHORT_NAME=chile-dm
+
+export BUILD_DIR=~/repos/chile/dm
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH

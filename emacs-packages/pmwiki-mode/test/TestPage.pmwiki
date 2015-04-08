@@ -1,0 +1,97 @@
+!! Set pmwiki-url
+(set 'pmwiki-url "http://www.pmichaud.com/wiki/EmacsModes/PmWikiModeTestPage?action")
+
+!! Wiki-Links
+Wiki-words:  AbC   ABc	ABc1    AbCdEf    AbC1
+Partial words:	AbC$	=> AbC,  	AbC%	=> AbC
+Not complete Wiki-words:  A  Ab  aB  AB	A_Bc AbÄ  1ABc $ABc
+(print (match-string 0) t)
+Links:			Shown as:		Point to:
+WikiSandbox		WikiSandbox		<CG>/WikiSandbox
+Main/WikiSandbox	WikiSandbox		Main/WikiSandbox
+Main.WikiSandbox	Main/WikiSandbox	Main/WikiSandbox
+Da/WikiSandbox          DD/WikiSandbox          DD/WikiSandbox
+WiWiWiki                WiWiWiki                <CG>/WiWiWiki
+http://www.org/~chr	http://www.org/~chr	http://www.org/~chr
+[[http://url]]		[1]			http://url
+[[http://url Alt text]]	Alt text		http://url
+
+!! Free links
+{{free}}
+Free links:		Shown as:		Points to:
+{{free link}}		free link		<CG>/FreeLink
+{{with-dash o}}		with-dash		<CG>/With-dashO
+{{free link}}s		free links		<CG>/FreeLink
+{{free link}}-random	free link-random	<CG>/FreeLink
+{{Lyx-1_3_0}}		Lyx-1_3_0		<CG>/Lyx-130
+{{install|ation}}	install			<CG>/installation
+{{install|ation}}ed	installed		<CG>/installation
+[[{{free link}} text]]	text			<CG>/FreeLink
+
+Main/{{a free link}}	[[{{a free link}}	a]]
+Main/{{a free	 link}}
+
+
+Special codes:
+[[<<]]		- Linebreak, also skips to point below any images
+\		- Line continuation	\
+
+[[#target]]	- Anchor target
+----		- Horizontal line
+
+Headings:		Shown as:
+! Heading level one	Heading level one
+!Heading level one	Heading level one
+!! Level two		Level two
+!!! Level three		Level three
+
+Images:
+  Position is dependend on spacing.
+  
+
+Full reference to a page:
+     GroupName.PageTitle
+
+Monospace text:			Shown as:
+ In monospace			 In monospace
+  This too    hm		  This too    hm
+	As well as this			As well as this
+
+Indented paragraphs:		Shown as:
+: :Indented paragraph			Indented paragraph 
+: :  Indented paragraph			Indented paragraph
+:: :Indented paragraph				 Indented paragraph
+:: :  Indented paragraph			 Indented paragraph
+
+
+Questions and answers
+
+Q: A question..
+A: An answer
+
+Bullets, enumerated and definition lists:
+* Level one
+** Level two
+# First
+## Second
+:term:definition
+: term : definition
+
+Emphasises (can't span lines):	Shown as:
+''emphasis''			emphasis
+'''strong'''			strong
+'''''other'''''			other
+@@in monospace@@		in monospace 
+@@in    monospace@@		in monospace
+[+larger text+]			larger text
+[+  larger   text  +]		larger text
+[-smaller text-]		smaller text
+[-  smaller text  -]		smaller text
+
+Escape sequence:	Note:
+[= text =]		Spacing is removed, text not interpreted
+ [= text =]		Monospace activated, spacing not removed
+
+WikiStyle:
+%red%
+%color=red bgcolor=blue%

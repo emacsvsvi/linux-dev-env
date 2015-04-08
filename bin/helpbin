@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "This will list all of the scripts in the dev-env bin"
+    echo "directory with the help."
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+cd ${DEV_HOME}/dev-env/bin
+echo ""
+grep -l syntax * | grep -v /# | xargs -t -I {} bash {} -h
+grep -l pusage * | grep -v helpbin | xargs -t -I {} python {} -h

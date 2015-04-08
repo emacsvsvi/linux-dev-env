@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME="OE Match"
+export PROJECT_SHORT_NAME=oem
+
+export BUILD_DIR=~/repos/oematch
+export DEPLOY_DIR=~/apphome/oematch
+export BASE_DIR=~/apphome/oematch
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd ~/apphome/bin PATH

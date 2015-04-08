@@ -1,0 +1,50 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "Use the alias cdd to call this script so that the change in directory is kept."
+    echo ""
+    echo "Change directory (cd) to a directory below the current one that has the name of the first argument."
+    echo "If there is more than one directory with that name you will be prompted to choose the correct one."
+    echo "If there are more than 20 directories with the name then an error is returned."
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+(find -L . | grep -v .hg | grep $1\$ >~/.cdd-dirs) &>/dev/null
+num_dirs=`wc -l ~/.cdd-dirs | awk '{print $1}'`
+
+if [ ${num_dirs} == 1 ]; then
+   cd `cat ~/.cdd-dirs`
+   rm ~/.cdd-dirs
+   return 0
+fi
+if [ ${num_dirs} == 0 ]; then
+    echo "No directory with that name found"
+    return 1
+fi
+if [ ${num_dirs} -gt 20 ]; then
+    echo "Too many directories found"
+    return 1
+fi
+
+awk '{print NR $1}' < ~/.cdd-dirs
+read -p "Select the directory (0 for return): " dirnum
+
+if [ $dirnum == 0 ]; then
+   return 0
+fi
+
+cd `sed -n ${dirnum}p < ~/.cdd-dirs`

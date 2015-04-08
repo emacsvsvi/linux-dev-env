@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export PROJECT_NAME="Hadoop-2 DL"
+export PROJECT_SHORT_NAME=hdl2
+
+export BUILD_DIR=~/repos/dataloader
+export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/jdk1.6.0_32
+export HADOOP_CONF_DIR=/shared/sparker/thirdparty/hadoop-2/conf/
+
+pathadd /active/java/bin PATH
+pathadd /opt/apache/hadoop/hadoop-2.2.0/bin PATH
+pathadd /opt/apache/hadoop/hadoop-2.2.0/sbin PATH

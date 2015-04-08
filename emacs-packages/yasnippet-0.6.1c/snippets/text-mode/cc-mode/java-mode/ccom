@@ -1,0 +1,13 @@
+#name : Comment for a class
+# --
+/**
+  * ${1:desc}
+  *            
+  * <p>Required properties:
+  *   <ul>
+  *     <li>host</li>
+  *     <li>port</li>
+  *   </ul>
+  * 
+  *
+  */

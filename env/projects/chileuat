@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export PROJECT_NAME=chilecore
+export PROJECT_SHORT_NAME=chilecore
+
+export BUILD_DIR=~/repos/chilecore-uat/chilecore
+export DEPLOY_DIR=~/apphome
+
+export JAVA_HOME=/active/java
+export TU_BASE_DIR=${DEPLOY_DIR}/base
+export TU_HOME_DIR=${DEPLOY_DIR}/home
+
+pathadd /active/java/bin PATH
+pathadd ~/apps/bin PATH
+pathadd ${DEPLOY_DIR}/base/bin PATH
+
+export INFORMIXSERVER=chiledev_tcp
+. /active/sqlcmd/sqlcmd.env
+. /active/sqlcmd/sqlcmd_ifx.env
+
+export TUCONFIG_CHILECORE=interceptor-a

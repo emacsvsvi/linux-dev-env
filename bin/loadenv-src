@@ -1,0 +1,45 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    Load up the environment variables for a project.  The first argument should be the project name."
+    echo ""
+    echo "    loadenv <project name/short name>"
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+file_loaded=f
+
+if [ -n "${PROJECT_SHORT_NAME+x}" ]; then
+    . unloadenv-src ${PROJECT_SHORT_NAME}
+fi
+
+if [ -f ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME} ]; then
+    . ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME}
+    file_loaded=t
+fi
+
+if [ -f ${DEV_HOME}/dev-env/env/projects/$1 ]; then
+    . ${DEV_HOME}/dev-env/env/projects/$1
+    file_loaded=t
+fi
+
+if [ ${file_loaded} == f ]; then
+    echo "Couldn't find project files for "$1
+else
+    PS1="[\u@\h($PROJECT_NAME) \w]\n\$ "    
+    echo "Project "${PROJECT_NAME}" loaded."
+fi

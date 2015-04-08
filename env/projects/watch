@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export BUILD_DIR=/home/sparker/repos/watch
+export DEPLOY_DIR=/home/sparker/apps/watch
+
+export ACTIVEMQ_HOME=/active/apache-activemq
+export ACTIVEMQ_BASE=${DEPLOY_DIR}/activemq
+export TOMCAT_HOME=${DEPLOY_DIR}/catalina
+export CATALINA_HOME=/active/tomcat
+export CATALINA_BASE=${DEPLOY_DIR}/catalina
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd /home/sparker/apps/bin PATH
+pathadd ${ACTIVEMQ_HOME}/bin PATH
+
+. /active/postgresql/postgres.env
+

@@ -1,0 +1,61 @@
+
+* work todos
+** TODO Documentation for iBF
+*** TODO Use the default demo application for examples in the iBF documentation
+** TODO Sonar - do a build in coverity and compare two tools
+** TODO Architecture Diagram for watch
+** DONE update etime with date for skiing and spring break vacation
+** TODO Meeting to discuss how to use Unicenter for supporting iBF
+** TODO Fixes to batchbase
+*** DONE Remove EventQueue.java because it is totally unused
+*** DONE Update StatKey interface to only include getFullKey and getIndex.  The other methods are unique to DefaultStatKey and shouldn't be here
+*** DONE Add method addStatToList for Strings to FileStateManager
+*** TODO Fix up the EventProcessor functionality, events and handlers functionality overall.  Why do we have two methods? Combine and 
+make it so the functionality can be implemented in each server (topic) or only one (queue) through configuration.
+*** TODO Update the handleException method in BaseProcessor to re throw the exception.
+** TODO Changes to watch
+*** TODO Figure out how to handle merge when watching an acct/FID
+*** TODO Get stats in watch to use the iBF for update etc.
+*** TODO Get current values working where needed
+*** TODO Get score and utilization watches working
+*** TODO Fix the tests in base
+*** TODO Use rules for updating the file state in loader.
+*** TODO Doc on integration with indicative environment
+*** TODO Architecture document
+** TODO Create default implementation of the iBF - analyze source control directory structure
+*** DONE make the directory processor crawl the directory tree, and only count files not directories and figure out why db update failed see log
+*** TODO handle assembly, handle push back for file specific queues(override in child class), handle error and reject queueing to a file specific Q 
+*** TODO Add validator to make sure directory is valid...
+*** TODO Make the assembleQ a per file queue
+*** TODO Move the transition map and other info that is the same across web and ibf into separate file so don't repeat config
+*** TODO gui
+**** TODO Update list of statuses for find from list in configuration used for summary stats on left
+**** TODO Update how the drop down for multi file changes - make it clean!!
+**** TODO Get archive search working
+**** TODO Test everything
+*** TODO FileParser 
+**** TODO parse list of directories and language (CSV)
+**** TODO Create a set of records for each file with in top level directory
+**** TODO Do some stats and validation on each file
+**** TODO Create a report at the end for all of the stats processed
+**** TODO Create a configuration file etc. for this application
+**** TODO Use slicing too
+
+* home todos
+** TODO Flooring in hall and entry
+*** TODO Find some flooring
+*** TODO Remove flooring from hall
+*** TODO Remove all of the trim
+*** TODO Get thresholds for 4 bedrooms, batch, front door, living room, and family room
+** TODO Finances
+*** TODO Create a budget, and understand where are money is going.
+*** TODO Refinance mortgage
+*** TODO Email to Brice and Mike for some work
+*** TODO Start tax returns
+** TODO TAXES!!
+** TODO Insulation
+*** TODO Put some insulation around dryer
+*** TODO Insulate window in basement using plastic
+*** TODO Front Door
+** Get automatic sync working using hg and certificates
+** Sign up for bball

@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+import getopt, os, sys
+
+def output():
+	print "Projects..."
+
+	DEV_HOME="DEV_HOME"
+	NAME="PROJECT_SHORT_NAME"
+	currName = ""
+	devHome = "/home/sparker"
+	projDir = "/dev-env/env/projects"
+	devDir = devHome + projDir
+	
+
+	if NAME in os.environ:
+		currName = os.environ[NAME]
+
+	if DEV_HOME in os.environ:
+		devDir = os.environ[DEV_HOME] + projDir
+
+	for proj in os.listdir(devDir):
+   		if proj == currName :
+   			print "    ", proj, "    CURRENT"
+		else :
+			print "    ", proj
+
+	print
+
+def pusage():
+	print
+	print "\x1b[34m*********************** "
+	print "    List all of the environments available for loading, and"
+	print "    mark the current environment."
+	print
+	print "***********************\x1b[0m"
+	print
+	
+def main(argv):
+	try:
+		opts, args = getopt.getopt(argv, "h", ["help"])
+	except getopt.GetoptError:
+		pusage()
+		sys.exit(2)
+
+
+	for opt, arg in opts:
+		if opt in ("-h", "--help"):
+			pusage()
+			sys.exit()
+	output()
+
+if __name__ == "__main__":
+	main(sys.argv[1:])

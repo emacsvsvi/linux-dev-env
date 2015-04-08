@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: java main definition
+# --
+public static final void main(String[] args)
+{
+}

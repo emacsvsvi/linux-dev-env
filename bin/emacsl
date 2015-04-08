@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    Run emacs in a quick mode, but still use my key bindings."
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+export EMACS_MIN=Y
+emacs -u sparker -nw $1
+export EMACS_MIN=

@@ -1,0 +1,12 @@
+#name : Comment for a method
+# --
+/**
+  * ${1:method desc}
+  *
+  * @param ${2:name} ${3:desc}
+  *            
+  * @return ${4:type} ${5:desc}
+  * 
+  * @exception ${6:type} ${7:desc}
+  *
+  */

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export PROJECT_NAME="Triggers"
+export PROJECT_SHORT_NAME=triggers
+
+export BUILD_DIR=/home/sparker/repos/triggers
+export DEPLOY_DIR=/home/sparker/apps/triggers
+
+export TOMCAT_HOME=${DEPLOY_DIR}/catalina
+export CATALINA_HOME=/active/tomcat
+export CATALINA_BASE=${DEPLOY_DIR}/catalina
+
+export JAVA_HOME=/active/java
+
+export TUCONFIG_TRIGGERS=tucanada-ps-devind-stan
+
+pathadd /active/java/bin PATH
+pathadd /home/sparker/apps/triggers/bin PATH

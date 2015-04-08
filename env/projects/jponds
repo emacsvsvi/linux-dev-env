@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME=jponds
+export PROJECT_SHORT_NAME=jp
+
+export BUILD_DIR=/media/cdata/dev/jponds
+export DEPLOY_DIR=/media/cdata/devapps/jponds
+
+export TOMCAT_HOME=${DEPLOY_DIR}/catalina
+export CATALINA_HOME=/media/cdata/dev/thirdparty/apache-tomcat
+export CATALINA_BASE=${DEPLOY_DIR}/catalina
+
+#export JAVA_HOME=/active/java

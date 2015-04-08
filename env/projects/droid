@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME=droid
+export PROJECT_SHORT_NAME=droid
+
+export BUILD_DIR=/media/cdata/dev/droid
+export DEPLOY_DIR=/media/cdata/deploy/${PROJECT_SHORT_NAME}
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+pathadd /media/cdata/apps/apache-maven-3.0.4/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${BUILD_DIR}/android-sdk-linux/tools PATH
+pathadd ${BUILD_DIR}/android-sdk-linux/platform-tools PATH

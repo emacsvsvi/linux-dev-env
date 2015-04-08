@@ -1,0 +1,72 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    usage:"
+    echo "        fig -s <search text> [-i] [-f <filter files text>]"
+    echo ""
+    echo "    Options:"
+    echo "        -s <search text> This is the text that will be grepped in the current directory and subdirectories."
+    echo "        -f <filter files text> This will filter the files that are grepped. Only those file that contain the text in"
+    echo "            their name will be grepped"
+    echo "        -i Ignore case"
+    echo ""
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+# default is false
+IGNORE_CASE=1
+FILE_FILTER=""
+
+echo ""
+
+while getopts "f:his:" OPTION
+do
+     case $OPTION in
+         f)
+             FILE_FILTER=${OPTARG}
+             ;;
+         h)
+             syntax
+             exit 1
+             ;;
+         i)
+             IGNORE_CASE=0
+             ;;
+         s)
+             SEARCH_TERM=${OPTARG}
+             ;;
+         ?)
+             echo Invalid arguments
+             echo
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+# Need at least a search term for this to work...
+if [[ ! ${SEARCH_TERM} ]]; then
+    echo You must include a search term.
+    echo
+    syntax
+    exit 2
+fi
+
+CMD="find . -print0 | xargs -0 -e grep"
+if [ ${IGNORE_CASE} == 0 ]; then
+    CMD="${CMD} -i"
+fi
+CMD="${CMD} -I -n -e ${SEARCH_TERM}"
+if [[ ${FILE_FILTER} ]]; then
+    CMD="${CMD} | grep ${FILE_FILTER}"
+fi
+CMD="${CMD} | grep -v \\.hg | grep -v \\.svn"
+
+#echo CMD:${CMD}
+echo 
+eval ${CMD}
+echo ""

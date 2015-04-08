@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    This is the basis for all my scripts.  To create a new"
+    echo "    script copy this file to the new script name."
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+
+echo "Waiting to be copied into another script..."
+

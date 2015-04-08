@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export PROJECT_NAME=ponds
+export PROJECT_SHORT_NAME=ponds
+
+export BUILD_DIR=/media/cdata/dev/${PROJECT_SHORT_NAME}
+export DEPLOY_DIR=/media/cdata/deploy/${PROJECT_SHORT_NAME}
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+pathadd ${JAVA_HOME}/bin PATH

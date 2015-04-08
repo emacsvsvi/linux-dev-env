@@ -1,0 +1,25 @@
+#!/bin/bash
+
+export PROJECT_NAME="Source code analyzer"
+export PROJECT_SHORT_NAME=sca
+
+export BUILD_DIR=~/repos/sca
+export DEPLOY_DIR=~/apps/sca
+
+export IBF_HOME=${DEPLOY_DIR}/home
+export IBF_BASE=${DEPLOY_DIR}/base
+export TC_HOME=/active/terracotta
+export TC_HOST=tuintlps18.tuintl.transunion.com
+export ACTIVEMQ_HOME=/active/apache-activemq
+export ACTIVEMQ_BASE=${DEPLOY_DIR}/activemq
+export CATALINA_HOME=/active/tomcat
+export CATALINA_BASE=${DEPLOY_DIR}/catalina
+
+export JAVA_HOME=/active/java
+export PGDATA=${DEPLOY_DIR}/pgdata
+
+source /active/postgresql-8.4.8/postgresql.env
+
+pathadd /active/java/bin PATH
+pathadd ~/apps/bin PATH
+pathadd ${ACTIVEMQ_HOME}/bin PATH

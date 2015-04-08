@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export PROJECT_NAME=batchbase
+export PROJECT_SHORT_NAME=bb
+
+export BUILD_DIR=/home/sparker/repos/batchbase/batchbase/
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+

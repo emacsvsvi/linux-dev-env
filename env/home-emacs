@@ -1,0 +1,10 @@
+(defconst dev-dir (concat (getenv "DEV_HOME") "/dev-env"))
+(defconst pkg-dir (concat dev-dir "/emacs-packages/"))
+
+(setq use-theme 'color-theme-renegade)
+(setq use-flymake "true")
+
+(if (equal "Y" (getenv "EMACS_MIN"))
+    (load-file (concat pkg-dir "emacsinit-min.el"))
+    (load-file (concat pkg-dir "emacsinit.el"))
+)

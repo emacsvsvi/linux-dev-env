@@ -1,0 +1,35 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    usage: pathrm <directory> [name of path]"
+    echo "    All instances of the directory will be removed from the named path."
+    echo "    If the name of path is missing PATH is defaulted."
+    echo ""
+    echo "    Example:"
+    echo ""
+    echo "    pathadd ~/bin PATH"
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+PATH_VAR=${2:-PATH}
+CURR_IFS=${IFS}
+IFS=
+CURR_PATH=$(eval echo \$${PATH_VAR})
+
+export ${PATH_VAR}=`echo ${!PATH_VAR} | sed "s;${1}:;;g"`
+
+export IFS=${CURR_IFS}

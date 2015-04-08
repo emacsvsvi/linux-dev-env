@@ -1,0 +1,291 @@
+;;  Deal with cygwin vs bash
+;;  Deal with maximize frame for win32
+
+;; The following lines are always needed.  Choose your own keys.
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+
+;; save the desktop for next time
+(desktop-save-mode 1)
+(setq history-length 250)
+(add-to-list 'desktop-globals-to-save 'file-name-history)
+
+;; python mode setup
+(setq load-path (cons (concat pkg-dir "python-mode-1.0") load-path))
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; load path
+(setq load-path (cons (concat pkg-dir "color-theme-6.6.0") load-path))
+(setq load-path (cons (concat pkg-dir "jde-2.3.5.1/lisp") load-path))
+(setq load-path (cons (concat pkg-dir "cedet-1.0pre4/common") load-path))
+(setq load-path (cons (concat pkg-dir "elib-1.0") load-path))
+(setq load-path (cons (concat pkg-dir "ecb-2.32") load-path))
+(setq load-path (cons (concat pkg-dir "site-lisp") load-path))
+
+(load-file (expand-file-name (concat pkg-dir "cedet-1.0pre4/common/cedet.el")))
+
+;;loading ergo emacs 
+;;(load-file (concat pkg-dir "site-lisp/ergonomic_keybinding_qwerty_4.3.6.el"))
+(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US layout
+;; load ErgoEmacs keybinding
+(load-file (concat pkg-dir "ergoemacs-keybindings-5.1/ergoemacs-mode"))
+;; turn on minor mode ergoemacs-mode
+(ergoemacs-mode 1)
+
+(require 'ecb)
+
+;;(setq Info-directory-list (cons (concat pkg-dir "cedet-1.0pre4/semantic/doc" Info-directory-list))
+
+;; jde setup
+(require 'jde)
+
+;; Set color themeXS
+(require 'color-theme)
+(color-theme-initialize)
+(message "color initialized")
+(if (boundp 'use-theme)
+    (funcall use-theme)
+    (color-theme-deep-blue))
+
+;; Some stuff from Steve Yegge's suggestions
+(require 'ido)
+(ido-mode 'buffer)
+(setq ido-enable-flex-matching t)
+
+;; buffer naming instead of <2> uses directory names.
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
+(setq ibuffer-shrink-to-minimum-size t)
+(setq ibuffer-always-show-last-buffer nil)
+(setq ibuffer-sorting-mode 'recency)
+(setq ibuffer-use-header-line t)
+(global-set-key [(f12)] 'ibuffer)
+
+;; Brief window movement using shift arrow keys
+(windmove-default-keybindings)
+
+;; java syntax At work we use tabs...
+(setq-default tab-width 4)
+
+(defun apache-jakarta-mode ()
+  "The Java mode specialization for Apache Jakarta projects."
+  (message "jakarta-mode")
+  (if (not (assoc "apache-jakarta" c-style-alist))
+      ;; Define the Apache Jakarta cc-mode style.
+      (c-add-style "apache-jakarta" '("java" (indent-tabs-mode . t)))) ;; Use tabs for indentation
+;;      (c-add-style "apache-jakarta" '("java" (indent-tabs-mode . nil)))) ;; Use spaces for indentation
+
+  (c-set-style "apache-jakarta")
+  (c-set-offset 'substatement-open 0 nil)
+  (setq mode-name "Apache Jakarta"))
+
+;; xml package
+(load-file (expand-file-name (concat pkg-dir "/nxml-mode-20041004/rng-auto.el")))
+(setq auto-mode-alist
+      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
+        auto-mode-alist))
+
+(put 'scroll-left 'disabled nil)
+
+;; ========== Line by line scrolling ==========
+
+;; This makes the buffer scroll by only a single line when the up or
+;; down cursor keys push the cursor (tool-bar-mode) outside the
+;; buffer. The standard emacs behaviour is to reposition the cursor in
+;; the center of the screen, but this can make the scrolling confusing
+
+(setq scroll-step 1)
+
+;; Show column-number in the mode line
+(column-number-mode 1)
+
+;; ========== Place Backup Files in Specific Directory ==========
+;; Enable backup files.
+(setq make-backup-files t)
+;; Enable versioning with default values (keep five last versions, I think!)
+(setq version-control t)
+;; So that I don't get annoying question about deleting older versions 
+(setq delete-old-versions t)
+;; Save all backup file in this directory.
+(setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
+
+;; Windows specific stuff
+(when (eq system-type 'windows-nt)
+  ;; Maximize frame
+  (message "We are in win-nt")
+  (defun w32-maximize-frame ()
+      "Maximize the current frame"
+      (interactive)
+      (w32-send-sys-command 61488)
+	  (sleep-for 2)
+	  (ecb-redraw-layout))
+ 
+  (add-hook 'window-setup-hook 'w32-maximize-frame t)
+
+  ;; fix cygwin path issues
+  (setenv "PATH" (concat (concat apps-dir "cygwin/bin;") (getenv "PATH")))
+  (setq exec-path (cons (concat apps-dir "cygwin/bin/") exec-path))
+  (require 'cygwin-mount)
+  (cygwin-mount-activate)
+
+  ;; load cygwin bash shell
+  (add-hook 'comint-output-filter-functions
+            'shell-strip-ctrl-m nil t)
+  (add-hook 'comint-output-filter-functions
+            'comint-watch-for-password-prompt nil t)
+  (setq explicit-shell-file-name "bash.exe")
+  ;; For subprocesses invoked via the shell
+  ;; (e.g., "shell -c command")
+  (setq shell-file-name explicit-shell-file-name)
+
+  ;; cygwin keybindings for previous command functionality
+  (add-hook 'shell-mode-hook 'n-shell-mode-hook)
+  (defun n-shell-mode-hook ()
+    "12Jan2002 - sailor, shell mode customizations."
+    (local-set-key '[up] 'comint-previous-input)
+    (local-set-key '[down] 'comint-next-input)
+    (local-set-key '[(shift tab)] 'comint-next-matching-input-from-input))
+
+  '(ecb-source-path (quote ("T:\\ccstore\\icrs3" "t:\\ccstore\\views")))
+  (message "Adding 1.6.0-7")
+  '(jde-jdk (quote ("1.6.0_07")))
+  '(jde-jdk-registry (quote (("1.6.0_07" . "C:\\Data\\work\\dev\\thirdparty\\jdk"))))
+)
+
+;; When not windows
+(unless (eq system-type 'windows-nt)
+  (message "Not win-nt")
+  (defun switch-full-screen ()
+    (interactive)
+    (shell-command "wmctrl -r :ACTIVE: -btoggle,maximized_horz,maximized_vert"))
+;;    (ecb-redraw-layout))
+
+  (global-set-key [f11] 'switch-full-screen)
+  (switch-full-screen)
+
+  '(ecb-source-path (quote ("C:\\Users\\sparker\\dev\\search\\trunk" "c:/Users/sparker")))
+  (message "Adding not nt 1.6.0-7")
+  '(jde-jdk (quote ("1.6.0_07")))
+  '(jde-jdk-registry (quote (("1.6.0_07" . "/home/int5sys/opt/java"))))
+)
+
+;;  This is to run ant incrementally to see problems before building...
+(when use-flymake
+   (message "using flymake")
+   (require 'flymake)
+ 
+   (defun flymake-java-ecj-init ()
+	 (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+						  'jde-ecj-create-temp-file))
+			(local-file  (file-relative-name
+						  temp-file
+						  (file-name-directory buffer-file-name))))
+	   ;; Change your ecj.jar location here
+	   (list "java" (list "-jar" (concat pkg-dir "ecj.jar") "-Xemacs" "-d" "/dev/null" 
+						  "-source" "1.5" "-target" "1.5" "-proceedOnError"
+						  "-sourcepath" (car jde-sourcepath) "-classpath" 
+						  (jde-build-classpath jde-global-classpath) local-file))))
+ 
+   (defun flymake-java-ecj-cleanup ()
+	 "Cleanup after `flymake-java-ecj-init' -- delete temp file and dirs."
+	 (flymake-safe-delete-file flymake-temp-source-file-name)
+	 (when flymake-temp-source-file-name
+	   (flymake-safe-delete-directory (file-name-directory flymake-temp-source-file-name))))
+ 
+   (defun jde-ecj-create-temp-file (file-name prefix)
+	 "Create the file FILE-NAME in a unique directory in the temp directory."
+	 (file-truename (expand-file-name (file-name-nondirectory file-name)
+									  (expand-file-name  (int-to-string (random)) (flymake-get-temp-dir)))))
+ 
+   (push '(".+\\.java$" flymake-java-ecj-init flymake-java-ecj-cleanup) flymake-allowed-file-name-masks)
+ 
+   (push '("\\(.*?\\):\\([0-9]+\\): error: \\(.*?\\)\n" 1 2 nil 2 3 (6 compilation-error-face)) compilation-error-regexp-alist)
+ 
+   (push '("\\(.*?\\):\\([0-9]+\\): warning: \\(.*?\\)\n" 1 2 nil 1 3 (6 compilation-warning-face)) compilation-error-regexp-alist)
+
+   (defun credmp/flymake-display-err-minibuf () 
+	 "Displays the error/warning for the current line in the minibuffer"
+	 (interactive)
+	 (let* ((line-no             (flymake-current-line-no))
+			(line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no)))
+			(count               (length line-err-info-list)))
+	   (while (> count 0)
+		 (when line-err-info-list
+		   (let* ((file       (flymake-ler-file (nth (1- count) line-err-info-list)))
+				  (full-file  (flymake-ler-full-file (nth (1- count) line-err-info-list)))
+				  (text (flymake-ler-text (nth (1- count) line-err-info-list)))
+				  (line       (flymake-ler-line (nth (1- count) line-err-info-list))))
+			 (message "[%s] %s" line text)))
+		 (setq count (1- count)))))
+
+   (defun my-get-cp()
+	 "To use in prj.el jde project files: (set-variable 'jde-global-classpath (get-cp)) will search for build.xml with ant -find build.xml. 
+      Special target in build.xml must be defined:
+          <target name=\"print-classpath\">
+              <property name=\"classpath\" refid=\"project.classpath\"/>
+              <echo message=\"-classpath-${classpath}-classpath-\"/>
+          </target>
+
+      Where project.classpath is the id of the tag path where classpath
+      is defined."
+	 (let* ((pattern "-classpath-")
+			(out-string (shell-command-to-string "ant -q -find build.xml print-classpath"))
+			(point-start (+ (length pattern) (string-match pattern out-string)))
+			(point-end (string-match pattern out-string point-start))
+			(class-string (substring out-string point-start point-end)))
+	   (split-string  class-string ":")))
+
+   (defun display-next-err ()
+	 "Go to the next error and display message"
+	 (interactive)
+	 (flymake-goto-next-error)
+	 (credmp/flymake-display-err-minibuf))
+
+   (global-set-key (kbd "C-e") 'display-next-err)
+)
+;;  END fly-make
+
+;; Activate Jakarta mode.
+(add-hook 'java-mode-hook 'apache-jakarta-mode)
+(when (fboundp 'jde-mode)
+    (add-hook 'jde-mode-hook 'apache-jakarta-mode))
+
+ (when use-flymake 
+   (progn
+	 (message "use-flymake java")
+	 (add-hook 'java-mode-hook 'flymake-mode))
+   (when (fboundp 'jde-mode)
+	 (progn
+	   (message "use-flymake jde")
+	   (add-hook 'jde-mode-hook 'flymake-mode))))
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ecb-auto-activate t)
+ '(ecb-gzip-setup (cons (if (fboundp (quote executable-find)) (executable-find "gzip") "gzip") (case system-type (cygwin32 (quote cygwin)) (windows-nt (if (getenv "CYGWIN") (quote cygwin) (quote windows))) (otherwise (quote other)))))
+ '(ecb-layout-window-sizes (quote (("left8" (0.19540229885057472 . 0.2698412698412698) (0.19540229885057472 . 0.2222222222222222) (0.19540229885057472 . 0.25396825396825395) (0.19540229885057472 . 0.20634920634920634)))))
+ '(ecb-options-version "2.32")
+ '(ecb-tar-setup (cons (if (fboundp (quote executable-find)) (executable-find "tar") "tar") (case system-type (cygwin32 (quote cygwin)) (windows-nt (if (getenv "CYGWIN") (quote cygwin) (quote windows))) (otherwise (quote other)))))
+ '(ecb-tip-of-the-day nil)
+ '(ecb-wget-setup (cons (if (fboundp (quote executable-find)) (executable-find "wget") "wget") (case system-type (cygwin32 (quote cygwin)) (windows-nt (if (getenv "CYGWIN") (quote cygwin) (quote windows))) (otherwise (quote other)))))
+ '(jde-global-classpath  (quote ("/opt/mex/stan/bld/repos/flat-jars"
+								  "/opt/mex/stan/bld/repos")))
+ '(jde-sourcepath (quote ("/opt/mex/stan/bld/r-epos/batchbase-repo/batchbase/src")))
+ '(jde-jdk (quote ("1.6.0_07")))
+ '(jde-jdk-registry (quote (("1.6.0_07" . "/home/int5sys/opt/java"))))
+ '(nxml-child-indent 4))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+    '(flymake-errline ((((class color)) (:background "firebrick" :foreground "beige"))))
+	'(flymake-warnline ((((class color)) (:background "blue" :foreground "beige")))))
+

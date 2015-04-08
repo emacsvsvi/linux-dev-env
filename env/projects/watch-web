@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ${DEV_HOME}/dev-env/env/projects/watch
+
+export PROJECT_NAME=watch-web
+export PROJECT_SHORT_NAME=watch-web
+
+export IBF_HOME=${DEPLOY_DIR}/home
+export IBF_BASE=${DEPLOY_DIR}/base
+

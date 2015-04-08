@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME="oesearch"
+export PROJECT_SHORT_NAME=oe
+
+export BUILD_DIR=~/repos/oe
+export DEPLOY_DIR=~/apphome/oe
+export BASE_DIR=~/apphome/oe
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd ~/apphome/bin PATH

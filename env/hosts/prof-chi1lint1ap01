@@ -1,0 +1,6 @@
+
+export JAVA_HOME=/home/int5sys/opt/jdk1.6.0_18
+export PATH=$JAVA_HOME/bin:$PATH
+export PYTHONPATH=$PYTHONPATH:/home/sparker/hghook
+
+export LS_COLORS='ow=00;34:'$LS_COLORS

@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function syntax()
+{
+    echo -e "\E[34m***********************"
+    echo "    Shortcuts for maven builds"
+    echo "        c - clean"
+    echo "        o - compile"
+    echo "        p - package"
+    echo "        i - install"
+    echo "        d - deploy"
+    echo "        t - skip tests"
+    echo ""
+    echo "***********************"
+    echo ""
+    tput sgr0
+}
+
+while getopts "h" OPTION
+do
+     case $OPTION in
+         ?)
+             syntax
+             exit 1
+             ;;
+     esac
+done
+
+MVN_OPTS=""
+TEST_OPTS=""
+
+for var in "$@"
+do
+    case $var in
+        c)
+            MVN_OPTS="${MVN_OPTS} clean"
+            ;;
+        o)
+            MVN_OPTS="${MVN_OPTS} compile"
+            ;;
+        p)
+            MVN_OPTS="${MVN_OPTS} package"
+            ;;
+        i)
+            MVN_OPTS="${MVN_OPTS} install"
+            ;;
+        d)
+            MVN_OPTS="${MVN_OPTS} deploy"
+            ;;
+        t)
+            TEST_OPTS="${TEST_OPTS} -DskipTests"
+            ;;
+        ?)
+            echo "Invalid argument: $var"
+            ;;
+    esac
+done
+
+echo mvn ${TEST_OPTS} ${MVN_OPTS}
+mvn ${TEST_OPTS} ${MVN_OPTS}

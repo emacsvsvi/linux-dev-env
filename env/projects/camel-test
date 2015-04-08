@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export PROJECT_NAME="Camel-test"
+export PROJECT_SHORT_NAME=ct
+
+export BUILD_DIR=~/repos/camel-test
+export DEPLOY_DIR=~/apps/camel-test
+
+export IBF_HOME=${DEPLOY_DIR}/home
+export IBF_BASE=${DEPLOY_DIR}/base
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd ~/apps/bin PATH

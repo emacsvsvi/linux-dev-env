@@ -1,0 +1,85 @@
+# .bashrc
+
+# Get the home for dev environment even if using a different user ID
+if [ "${DEV_HOME}" == "" -o ! -d "${DEV_HOME}/" ]; then
+	export DEV_HOME=~
+fi
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	source /etc/bashrc
+fi
+
+export JAVA_HOME=/active/java
+
+# to load the ergo emacs keybindings for readline (command history correction stuff)
+# Couldn't get this to work for cygwin so you need to copy it this file to .inputrc for cygwin
+export INPUTRC=${DEV_HOME}/dev-env/env/inputrc
+
+# User specific aliases and functions
+alias ls='ls --color=tty'
+alias la='ls -la'
+alias ll='ls -l'
+alias lt='ls -lrt'
+
+# change directory alias/scripts
+alias gor='cd ${REPO_DIR}'
+alias god='cd ${DEPLOY_DIR};wu deploy-${PROJECT_NAME}'
+alias gob='cd ${BUILD_DIR};wu build-${PROJECT_NAME}'
+
+# Maven shortcuts
+alias mvncc='mvn clean compile'
+alias mvncp='mvn clean package'
+alias mvnci='mvn clean install'
+alias mvncd='mvn clean deploy'
+alias mvnc='mvn compile'
+alias mvnp='mvn package'
+alias mvni='mvn install'
+alias mvnd='mvn deploy'
+
+# alias for scripts that change the environment or directory
+alias cdd='source cdd-src $1'
+alias loadenv='source loadenv-src $1'
+alias unloadenv='source unloadenv-src $1'
+alias wu='source winuse-src $1'
+alias pathadd='source pathadd-src'
+alias pathrm='source pathrm-src'
+alias el='emacsl'
+alias tmux='tmux attach'
+
+# find file names below current directory that contain argument - ignore hg dirs
+alias ftf='find . | grep -v .hg | grep '
+
+alias up='cd ..'
+alias up2='cd ../..'
+alias up3='cd ../../..'
+alias up4='cd ../../../..'
+alias up5='cd ../../../../..'
+
+alias jps='javaps -noflags'
+
+export TERM=xterm-256color
+export PATH=${DEV_HOME}/local/bin:${DEV_HOME}/bin:${DEV_HOME}/dev-env/bin:${DEV_HOME}/dev-env/bin/ext:${DEV_HOME}/apphome/bin:${DEV_HOME}/shared/local/bin:/home/int5sys/bin:${PATH}
+export WIN_USE=bash
+export REPO_DIR=/home/sparker/repos
+export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}--${WIN_USE}\007"'
+export PS1="[\u@\h($PROJECT_NAME) \w]\n\$ "
+
+# Should add an if statement here for cygwin
+if [ "$OSTYPE" == "cygwin" ]; then
+    source ~/sol.dark
+fi
+    
+# Load from other possible files
+if [ -f ${DEV_HOME}/dev-env/env/hosts/rc-${HOSTNAME} ]; then
+	source ${DEV_HOME}/dev-env/env/hosts/rc-${HOSTNAME}
+fi
+
+if [ -f ${DEV_HOME}/.rc-local ]; then
+	source ${DEV_HOME}/.rc-local
+fi
+
+if [ -f ${DEV_HOME}/dev-env/env/sites/${SITE}-bashrc ]; then
+    source ${DEV_HOME}/dev-env/env/sites/${SITE}-bashrc
+fi
+

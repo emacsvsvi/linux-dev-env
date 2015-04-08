@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export PROJECT_NAME=watch-icrs
+export PROJECT_SHORT_NAME=watch-icrs
+
+export BUILD_DIR=/home/sparker/watch-icrs
+export DEPLOY_DIR=/home/sparker/watch-icrs
+
+export TOMCAT_HOME=${DEPLOY_DIR}/tomcat
+export CATALINA_HOME=/active/tomcat
+export CATALINA_BASE=${DEPLOY_DIR}/tomcat
+
+export JAVA_HOME=/active/java
+
+export TUCONFIG_WEB=tucanada-watchdevl
+export TUCONFIG_CORE=tucanada-devl-watch+ifx

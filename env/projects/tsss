@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export PROJECT_NAME="Technology Systems Socket Server"
+export PROJECT_SHORT_NAME=tsss
+
+export BUILD_DIR=~/repos/tsss
+export DEPLOY_DIR=~
+
+export IBF_HOME=${DEPLOY_DIR}/apphome
+export IBF_BASE=${DEPLOY_DIR}/appbase
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd ~/apps/bin PATH

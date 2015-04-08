@@ -1,0 +1,36 @@
+#!/bin/env python
+import getopt, os, sys
+
+def output(rev):
+    os.system("hg log -r " + rev)
+    os.system("hg diff -b -B -w -c " + rev)
+
+def pusage():
+    print
+    print "\x1b[34m*********************** "
+    print "    hgcs [-h] [-r <revision number>"
+    print
+    print "    The argument should be the revision number that is being analyzed."
+    print "    This will output the description of the change plus the diff so that they can easily be reviewed."
+    print "    The argument should be the revision number that is being analyzed."
+    print
+    print "***********************\x1b[0m"
+    print
+
+def main(argv):
+    try:
+        opts, args = getopt.getopt(argv, "hr:", ["help", "revision"])
+    except getopt.GetoptError:
+        pusage()
+        sys.exit(2)
+
+
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            pusage()
+            sys.exit()
+        if opt in ("-r", "--revision"):
+            output(arg)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

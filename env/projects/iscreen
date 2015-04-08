@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export PROJECT_NAME=iscreen
+export PROJECT_SHORT_NAME=iscreen
+
+export BUILD_DIR=/home/sparker/repos/iscreen
+
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH

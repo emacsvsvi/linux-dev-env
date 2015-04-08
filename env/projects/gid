@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export PROJECT_NAME="Global ID"
+export PROJECT_SHORT_NAME=gid
+
+export BUILD_DIR=~/repos/globalid-v1
+export DEPLOY_DIR=~/shared/thirdparty/hadoop-1.1.2
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/java
+export HADOOP_CONF_DIR=/shared/sparker/thirdparty/hadoop-base/conf/
+
+pathadd /active/java/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH

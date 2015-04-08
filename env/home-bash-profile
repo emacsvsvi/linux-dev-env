@@ -1,0 +1,7 @@
+# source in the bashrc saved in my dev-env repo.
+
+if [ -f "$HOME/dev-env/env/bash_profile" ] ; then
+    source $HOME/dev-env/env/bash_profile
+else
+	echo "ERROR: couldn't find the dev-env bashrc, $HOME/dev-env/env/bash_profile"
+fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export PROJECT_NAME="OE Match - old"
+export PROJECT_SHORT_NAME=oemold
+
+export BUILD_DIR=~/repos/oematch
+export DEPLOY_DIR=~/apps/oematch-old
+
+export TSSS_HOME=${DEPLOY_DIR}/home
+export TSSS_BASE=${DEPLOY_DIR}/base
+
+export PROFILER_HOME=~/shared/thirdparty/profiler4j-1.0-beta2/
+export JAVA_HOME=/active/java
+
+pathadd /active/java/bin PATH
+pathadd ~/apps/bin PATH

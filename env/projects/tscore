@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export PROJECT_NAME=trinidad-score
+export PROJECT_SHORT_NAME=tscore
+
+export BUILD_DIR=/home/sparker/tt
+export REPO_DIR=/home/sparker/tt/repos
+export DEPLOY_DIR=/opt/trinidad/old/score_build_dev
+
+export ROOT=${REPO_DIR}/core
+
+export JAVA_HOME=/u/int5sys/opt/jdk1.6.0_10
+export TOMCAT_HOME=${DEPLOY_DIR}/tomcat/apache-tomcat-6.0.20
+export CATALINA_HOME=${TOMCAT_HOME}
+export CATALINA_BASE=${TOMCAT_HOME}
+
+. ${DEV_HOME}/dev-env/bin/pathadd ${JAVA_HOME}/bin PATH

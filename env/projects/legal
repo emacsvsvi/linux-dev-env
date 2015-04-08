@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export PROJECT_NAME=cibil-legal-changes
+export PROJECT_SHORT_NAME=legal
+
+export BUILD_DIR=/home/sparker/shared/repos/cibil-3.0-webchannel
+export DEPLOY_DIR=/opt/india/
+
+export TOMCAT_HOME=${DEPLOY_DIR}/tomcat
+export JAVA_HOME=/active/java
+export TUCONFIG_WEB=tuchicago-test
+
+pathadd ${JAVA_HOME}/bin
+
