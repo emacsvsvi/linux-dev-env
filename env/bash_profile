@@ -1,10 +1,6 @@
 # .bash_profile
 
-if [ -f /home/sparker/.rc-local ]; then
-	source /home/sparker/.rc-local
-elif [ -f /home/stan/.rc-local ]; then
-	source /home/stan/.rc-local
-fi
+export DEV_HOME=/home/sparker
 
 # Get the aliases and functions
 if [ -f ${DEV_HOME}/dev-env/env/bashrc ]; then

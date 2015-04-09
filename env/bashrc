@@ -74,12 +74,3 @@ fi
 if [ -f ${DEV_HOME}/dev-env/env/hosts/rc-${HOSTNAME} ]; then
 	source ${DEV_HOME}/dev-env/env/hosts/rc-${HOSTNAME}
 fi
-
-if [ -f ${DEV_HOME}/.rc-local ]; then
-	source ${DEV_HOME}/.rc-local
-fi
-
-if [ -f ${DEV_HOME}/dev-env/env/sites/${SITE}-bashrc ]; then
-    source ${DEV_HOME}/dev-env/env/sites/${SITE}-bashrc
-fi
-
