@@ -1,9 +1,10 @@
 #!/bin/bash
 
-export EMACS_HOME=/active/emacs-23.2/
+export EMACS_HOME=/active/emacs-24.4/
 
 . /active/python/python.env
 . /active/mercurial/mercurial.env
+. /active/git/git.env
 . /active/maven/maven.env
 . /active/tmux/tmux.env
 
