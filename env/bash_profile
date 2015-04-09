@@ -14,8 +14,8 @@ if [ -f ${DEV_HOME}/dev-env/env/sites/${SITE}-bash_profile ]; then
 fi
 
 # Get the aliases and functions for this host
-if [ -f ${DEV_HOME}/dev-env/env/hosts/prof-$HOSTNAME ]; then
-	source ${DEV_HOME}/dev-env/env/hosts/prof-$HOSTNAME
+if [ -f ${DEV_HOME}/dev-env/env/hosts/prof-`hostname` ]; then
+	source ${DEV_HOME}/dev-env/env/hosts/prof-`hostname`
 elif [ -f ${DEV_HOME}/.prof-local ]; then
 	source ${DEV_HOME}/.prof-local
 else
