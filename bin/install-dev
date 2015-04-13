@@ -43,7 +43,12 @@ fi
 
 olddir=~/old-`date +%y-%m-%d-%H-%M-%S`
 
-mkdir ${olddir} cp ~/.bashrc ${olddir} cp ~/.bash_profile ${olddir} cp ~/.emacs ${olddir} cp ~/.hgrc ${olddir} cp ~/.tmux.conf ${olddir}
+mkdir ${olddir}
+cp ~/.bashrc ${olddir}
+cp ~/.bash_profile ${olddir}
+cp ~/.emacs ${olddir}
+cp ~/.hgrc ${olddir}
+cp ~/.tmux.conf ${olddir}
 
 cp ~/dev-env/env/home-bashrc ~/.bashrc
 cp ~/dev-env/env/home-bash-profile ~/.bash_profile
