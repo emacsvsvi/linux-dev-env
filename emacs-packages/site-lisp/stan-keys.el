@@ -2,7 +2,8 @@
 ;;  Had to update the ergonomic key board specification to remove
 ;;  the C-l from the list of unbound keys.
 (global-set-key (kbd "C-l") 'goto-line)
-(global-set-key (kbd "M-m") 'display-next-err)
+(global-set-key (kbd "M-m") 'flycheck-next-error)
+(global-set-key (kbd "M-M") 'flycheck-previous-error)
 
 ;; This is so that the arrow keys will work.
 (global-unset-key (kbd "M-O"))

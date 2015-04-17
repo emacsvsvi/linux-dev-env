@@ -1,13 +1,24 @@
-;; python mode setup
-(setq load-path (cons (concat pkg-dir "python-mode-5.1.0") load-path))
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(add-hook 'python-mode-hook
-    (lambda ()
-	    (message "in python mode hook lambda")
-        (setq-default tab-width 4)
-        (indent-tabs-mode . nil)))
+;;; Init --- My initilization code:
+;;; Commentary:
+;;; Trying to get rid of errors
+
+;; load paths
+;;; Code:
+(setq load-path (cons (concat pkg-dir "site-lisp") load-path))
+(setq load-path (cons (concat pkg-dir "emacs-colors-solarized") load-path))
+
+;; Installation functionality
+;; This uses ~/.emacs.d/elpa to load all of the installed packages.
+;; Link this directory with ~/dev-env/emacs-packages/elpa so that we can make it
+;; mobile between installations
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
 
 ;; Get rid of ANNOYING beeps...
 (setq ring-bell-function 'ignore)
@@ -19,11 +30,14 @@
         (set (make-local-variable 'sgml-basic-offset) 4)))
 
 (setq-default indent-tabs-mode nil)
+(message "before")
+(require 'flycheck-java)
+(add-hook 'java-mode-hook
+          (lambda () (setq flycheck-java-ecj-jar-path (concat pkg-dir "ecj.jar"))))
+(message "after")
 
-;; load path
-(setq load-path (cons (concat pkg-dir "color-theme-6.6.0") load-path))
-(setq load-path (cons (concat pkg-dir "site-lisp") load-path))
-(setq load-path (cons (concat pkg-dir "emacs-colors-solarized") load-path))
+;; Turn on flycheck for syntax checking
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;loading ergo emacs
 ;; Changed M-O to M-Q to overcome arrow issue in us file.
@@ -32,27 +46,20 @@
 (load-file (concat pkg-dir "ergoemacs-keybindings-5.3.7/ergoemacs-mode.el"))
 ;; turn on minor mode ergoemacs-mode
 (ergoemacs-mode 1)
-
+(message "next")
 ;;loading my keybindings
 (load-file (concat pkg-dir "site-lisp/stan-keys.el"))
 
 ;; load mercurial package
-(require 'mercurial)
+;;(require 'mercurial)
 
 ;; Set color themeXS
-(require 'color-theme)
-(color-theme-initialize)
-(message "color initialized")
 (require 'color-theme-solarized)
-;; Not sure what this was supposed to do. Just set to solarized dark for now
-;;(if (boundp 'use-theme)
-;;    (message "use theme true")
-;;    (message "use theme false"))
-;;     (funcall use-theme))
-     (color-theme-solarized-dark)
+(color-theme-solarized-dark)
 
 ;; java syntax At work we use tabs...
 (setq-default tab-width 4)
+(message "later")
 
 ;; xml package
 (load-file (expand-file-name (concat pkg-dir "/nxml-mode-20041004/rng-auto.el")))
@@ -71,12 +78,6 @@
 (require 'ido)
 (ido-mode 'buffer)
 (setq ido-enable-flex-matching t)
-
-;; auto-complete configuration
-(add-to-list 'load-path (concat pkg-dir "/auto-complete"))
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat pkg-dir "/auto-complete/ac-dict"))
-(ac-config-default)
 
 ;; ========== Line by line scrolling ==========
 
@@ -116,5 +117,6 @@
 
 ;; Activate Jakarta mode.
 (add-hook 'java-mode-hook 'apache-jakarta-mode)
+;;; emacsinit-min.el ends here
 
 
