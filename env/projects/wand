@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export PROJECT_NAME=wand
+export PROJECT_SHORT_NAME=wand
+
+export BUILD_DIR=/data/dev/mobile-ws/
+export DEPLOY_DIR=/data/deploy/mobile-ws/
+export JAVA_HOME=/usr/lib/jvm/default-java
+export CATALINA_HOME=/data/deploy/tomcat
+export CATALINA_BASE=${DEPLOY_DIR}
+
+pathadd ${JAVA_HOME}/bin PATH
+
