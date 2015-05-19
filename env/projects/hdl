@@ -11,5 +11,5 @@ export JAVA_HOME=/active/java
 export HADOOP_CONF_DIR=/shared/sparker/thirdparty/hadoop-base/conf/
 export TUCONFIG_CORE=tucanada-perf-dl
 
-pathadd /active/java/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
