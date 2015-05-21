@@ -56,7 +56,7 @@ if [[ ! ${SEARCH_TERM} ]]; then
     exit 2
 fi
 
-CMD="find . -print0 | xargs -0 -e grep"
+CMD="find . -type f -print0 | xargs -0 -e grep"
 if [ ${IGNORE_CASE} == 0 ]; then
     CMD="${CMD} -i"
 fi
@@ -67,6 +67,5 @@ fi
 CMD="${CMD} | grep -v \\.hg | grep -v \\.svn"
 
 #echo CMD:${CMD}
-echo 
 eval ${CMD}
 echo ""
