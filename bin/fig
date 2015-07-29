@@ -60,7 +60,7 @@ CMD="find . -print0 | xargs -0 -e grep"
 if [ ${IGNORE_CASE} == 0 ]; then
     CMD="${CMD} -i"
 fi
-CMD="${CMD} -I -n -e ${SEARCH_TERM}"
+CMD="${CMD} -I -n -e '${SEARCH_TERM}'"
 if [[ ${FILE_FILTER} ]]; then
     CMD="${CMD} | grep ${FILE_FILTER}"
 fi
