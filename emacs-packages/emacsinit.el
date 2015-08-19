@@ -101,15 +101,17 @@
 )
 
 ;; When not windows
-(unless (eq system-type 'windows-nt)
-  (message "Not win-nt")
-  (defun switch-full-screen ()
-    (interactive)
-    (shell-command "wmctrl -r :ACTIVE: -btoggle,maximized_horz,maximized_vert"))
+;; Commented out because not sure what the use is, and work servers
+;; don't have wmctrl installed.
+;; (unless (eq system-type 'windows-nt)
+;;   (message "Not win-nt")
+;;   (defun switch-full-screen ()
+;;     (interactive)
+;;     (shell-command "wmctrl -r :ACTIVE: -btoggle,maximized_horz,maximized_vert"))
 
-  (global-set-key [f11] 'switch-full-screen)
-  (switch-full-screen)
-)
+;;   (global-set-key [f11] 'switch-full-screen)
+;;   (switch-full-screen)
+;; )
 
 ;; pymacs
 (autoload 'pymacs-apply "pymacs")
@@ -118,8 +120,6 @@
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 (eval-after-load "pymacs" '(add-to-list 'pymacs-load-path (concat pkg-dir "pymacs-code")))
-
-(pymacs-load "load-pom-classpath")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

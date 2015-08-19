@@ -2,10 +2,12 @@
 username=sparker
 
 [extensions]
+mercurial_keyring =
 review = /active/hg-review/review/
 hgshelve=~/dev-env/hg/hgshelve.py
 fetch=
 hgext.graphlog=
+transplant=
 
 [alias]
 slog = log -v -l 5
@@ -19,6 +21,8 @@ pretxncommit.crlf=python:hgext.win32text.forbidcrlf
 home-server.prefix=https://sparker.dnsalias.org
 home-server.cert=/home/sparker/apache-ssl/name.pem
 home-server.key=/home/sparker/apache-ssl/name.key
+work.prefix=https://tuintlvs01.tuintl.transunion.com/hg
+work.username=sparker
 
 [web]
 cacerts=

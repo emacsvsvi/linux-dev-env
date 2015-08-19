@@ -30,11 +30,9 @@
         (set (make-local-variable 'sgml-basic-offset) 4)))
 
 (setq-default indent-tabs-mode nil)
-(message "before")
 (require 'flycheck-java)
 (add-hook 'java-mode-hook
           (lambda () (setq flycheck-java-ecj-jar-path (concat pkg-dir "ecj.jar"))))
-(message "after")
 
 ;; Turn on flycheck for syntax checking
 (add-hook 'after-init-hook #'global-flycheck-mode)
