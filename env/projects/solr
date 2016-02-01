@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export PROJECT_NAME="SOLR"
+export PROJECT_SHORT_NAME=SOLR
+
+export BASE_DIR=~/solr-5.4.0
+export BUILD_DIR=${BASE_DIR}
+export DEPLOY_DIR=${BASE_DIR}
+
+export JAVA_HOME=/active/java8
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${BASE_DIR}/bin PATH
+

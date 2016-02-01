@@ -2,8 +2,8 @@
 username=sparker
 
 [extensions]
-mercurial_keyring =
-review = /active/hg-review/review/
+#mercurial_keyring =
+#review = /active/hg-review/review/
 hgshelve=~/dev-env/hg/hgshelve.py
 fetch=
 hgext.graphlog=
