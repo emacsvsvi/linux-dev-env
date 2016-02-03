@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export PROJECT_NAME="SOLR"
-export PROJECT_SHORT_NAME=SOLR
+export PROJECT_NAME="solr"
+export PROJECT_SHORT_NAME=solr
 
 export BASE_DIR=~/solr-5.4.0
 export BUILD_DIR=${BASE_DIR}
@@ -11,4 +11,9 @@ export JAVA_HOME=/active/java8
 
 pathadd ${JAVA_HOME}/bin PATH
 pathadd ${BASE_DIR}/bin PATH
+
+# Docker stuff
+export DOCKER_HOST=tcp://tuintlps42:2575
+pathadd /shared/sparker/docker/bin PATH
+pathadd /shared/sparker/etcd PATH
 
