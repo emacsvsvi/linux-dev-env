@@ -40,4 +40,4 @@ if [ -f ${DEV_HOME}/dev-env/env/projects/$1 ]; then
 fi
 
 export IFS=${CURR_IFS}
-PS1="[\u@\h($PROJECT_NAME) \w]\n\$ "
+PS1="$(printf "%$((COLUMNS-1))s\r")[\u@\h($PROJECT_NAME) \w]\n\$ "
