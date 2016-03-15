@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. /active/python/python.env
+. /active/mercurial/mercurial.env
+. /active/git/git.env
+. /active/maven/maven.env
+. /active/tmux/tmux.env

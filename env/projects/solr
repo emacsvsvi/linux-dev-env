@@ -15,5 +15,5 @@ pathadd ${BASE_DIR}/bin PATH
 # Docker stuff
 export DOCKER_HOST=tcp://tuintlps42:2575
 pathadd /shared/sparker/docker/bin PATH
-pathadd /shared/sparker/etcd PATH
+pathadd /sparker/solr-5.4.0/bin
 

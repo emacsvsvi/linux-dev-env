@@ -75,6 +75,9 @@ if [ -f ${DEV_HOME}/dev-env/env/hosts/rc-`hostname` ]; then
 	source ${DEV_HOME}/dev-env/env/hosts/rc-`hostname`
 fi
 
-if [[ `groups` == *"ind1grp"* ]] && [ -f ${DEV_HOME}/dev-env/env/sites/canada-bashrc ]; then
-   source ${DEV_HOME}/dev-env/env/sites/canada-bashrc
+if [[ `hostname` == "tuintlps43" ]] ||
+   [[ `hostname` == "tuintlps41" ]] ||
+   [[ `hostname` == "tuintlps40" ]] &&
+   [ -f ${DEV_HOME}/dev-env/env/sites/rh6-bashrc ]; then
+   source ${DEV_HOME}/dev-env/env/sites/rh6-bashrc
 fi
