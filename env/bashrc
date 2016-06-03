@@ -65,6 +65,14 @@ export REPO_DIR=/home/sparker/repos
 export PROMPT_COMMAND='echo -ne "\033]0;`hostname`--${WIN_USE}\007"'
 export PS1="$(printf "%$((COLUMNS-1))s\r")[\u@\h($PROJECT_NAME) \w]\n\$ "
 
+# Handle better history handling
+if [ ! -d $HOME/.history ]; then
+    mkdir -p $HOME/.history
+fi
+shopt -s histappend
+export HISTSIZE=100000
+export PROMPT_COMMAND=$PROMPT_COMMAND";echo : [\$(date)] $$ $USER \$OLDPWD\; \$(history 1 | sed -E 's/^[[:space:]]+[0-9]*[[:space:]]+//g') >> $HOME/.history/bash_history-\`date +%Y%m%d\`"
+
 # Should add an if statement here for cygwin
 if [ "$OSTYPE" == "cygwin" ]; then
     source ~/sol.dark
