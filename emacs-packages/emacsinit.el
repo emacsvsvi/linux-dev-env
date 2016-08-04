@@ -30,6 +30,10 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas-global-mode 1)
 
+;; Added this to try and get autocompletion to work for Java again.
+(require `auto-complete)
+(global-auto-complete-mode t)
+
 ;; buffer naming instead of <2> uses directory names.
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
@@ -54,10 +58,10 @@
 (setq backup-directory-alist (quote (("." . "~/.emacs_backups/"))))
 
 ;;  cedet semantic loading commands
+;;(load-file (concat pkg-dir "cedet-1.1/common/cedet.el"))
 ;;(semantic-load-enable-excessive-code-helpers)
 ;;(require 'semantic-ia)
 ;;(require 'semantic-java)
-
 
 ;; Windows specific stuff
 (when (eq system-type 'windows-nt)
