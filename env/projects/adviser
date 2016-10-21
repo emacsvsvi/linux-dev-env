@@ -3,18 +3,19 @@
 export PROJECT_NAME="Adviser"
 export PROJECT_SHORT_NAME=adviser
 
-export BUILD_DIR=~/repos/adviser-hadoop
-export DEPLOY_DIR=~/apps
+export BUILD_DIR=~/repos/adviser5
+export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.7.1
 export BASE_DIR=${DEPLOY_DIR}
 
 export JAVA_HOME=/active/java8
-export HADOOP_CONF_DIR=/etc/opt/apache/hadoop-2.2.0/conf
-#export TUCONFIG_CORE=tucanada-perf-dl
+export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf-2.7.1
+export PGDATA=/opt/postgres/data
+export PGHOST=localhost
+export PGDATABASE=adviser
 
-. /active/maven3/maven.env
-# if M2_HOME is set it can cause problems...
-unset M2_HOME
-pathadd /active/java8/bin PATH
+export TUCONFIG_CORE=tucanada-devl+ifx
+
+pathadd /home/sparker/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
-
-export TUCONFIG_VERSION=dev
+pathadd ${DEPLOY_DIR}/sbin PATH

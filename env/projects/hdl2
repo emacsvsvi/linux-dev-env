@@ -3,13 +3,13 @@
 export PROJECT_NAME="Hadoop-2 DL"
 export PROJECT_SHORT_NAME=hdl2
 
-export BUILD_DIR=~/repos/dataloader
+export BUILD_DIR=~/repos/ngdl
 export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
 export BASE_DIR=${DEPLOY_DIR}
 
-export JAVA_HOME=/active/jdk1.6.0_32
-export HADOOP_CONF_DIR=/shared/sparker/thirdparty/hadoop-2/conf/
+export JAVA_HOME=/active/java8
+export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf/
 
-pathadd /active/java/bin PATH
-pathadd /opt/apache/hadoop/hadoop-2.2.0/bin PATH
-pathadd /opt/apache/hadoop/hadoop-2.2.0/sbin PATH
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH
+pathadd ${DEPLOY_DIR}/sbin PATH

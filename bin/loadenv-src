@@ -25,7 +25,14 @@ else
             syntax
             ;;
         all)
-            find ${DEV_HOME}/dev-env/env/projects -type f -printf "%f\n" | sort
+            echo ---------------
+            echo Work
+            echo ---------------
+            find ${DEV_HOME}/dev-env/env/projects -maxdepth 1 -type f -printf "%f\n" | sort
+            echo ---------------
+            echo Home
+            echo ---------------
+            find ${DEV_HOME}/dev-env/env/projects/home -maxdepth 1 -type f -printf "%f\n" | sort
             ;;
         *)
             file_loaded=f
@@ -34,8 +41,9 @@ else
                 . unloadenv-src ${PROJECT_SHORT_NAME}
             fi
 
-            if [ -f ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME} ]; then
-                . ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME}
+            # Added home directory to split home and work env files
+            if [ -f ${DEV_HOME}/dev-env/env/projects/home/$1 ]; then
+                . ${DEV_HOME}/dev-env/env/projects/home/$1
                 file_loaded=t
             fi
 
@@ -47,7 +55,7 @@ else
             if [ ${file_loaded} == f ]; then
                 echo "Couldn't find project files for "$1
             else
-                PS1="[\u@\h($PROJECT_NAME) \w]\n\$ "    
+                PS1="$(printf "%$((COLUMNS-1))s\r")[\u@\h($PROJECT_NAME) \w]\n\$ "    
                 echo "Project "${PROJECT_NAME}" loaded."
             fi
             ;;

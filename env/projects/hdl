@@ -3,13 +3,13 @@
 export PROJECT_NAME="Hadoop DL"
 export PROJECT_SHORT_NAME=hdl
 
-export BUILD_DIR=~/repos/dataloader
-export DEPLOY_DIR=~/shared/thirdparty/hadoop-1.1.2
+export BUILD_DIR=~/repos/ngdl-bc
+export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
 export BASE_DIR=${DEPLOY_DIR}
 
 export JAVA_HOME=/active/java
-export HADOOP_CONF_DIR=/shared/sparker/thirdparty/hadoop-base/conf/
-export TUCONFIG_CORE=tucanada-perf-dl
+export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf/
 
 pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
+pathadd ${DEPLOY_DIR}/sbin PATH

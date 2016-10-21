@@ -11,5 +11,4 @@ export EMACS_HOME=/active/emacs-24.4/
 export PYTHONPATH=$PYTHONPATH:${DEV_HOME}/shared/python/lib/python2.7/site-packages/
 
 source pathadd-src ${EMACS_HOME}/bin PATH
-source pathadd-src /software/int5sys_files/bin PATH
 
