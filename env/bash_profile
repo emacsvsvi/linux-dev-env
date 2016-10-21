@@ -13,12 +13,3 @@ if [ -f ${DEV_HOME}/dev-env/env/sites/${SITE}-bash_profile ]; then
     source ${DEV_HOME}/dev-env/env/sites/${SITE}-bash_profile
 fi
 
-# Get the aliases and functions for this host
-if [ -f ${DEV_HOME}/dev-env/env/hosts/prof-`hostname` ]; then
-	source ${DEV_HOME}/dev-env/env/hosts/prof-`hostname`
-elif [ -f ${DEV_HOME}/.prof-local ]; then
-	source ${DEV_HOME}/.prof-local
-else
-	echo "Couldn't find the prof-<hostname> file or the ${DEV_HOME}/.prof-local file."
-fi
-
