@@ -4,9 +4,10 @@ function syntax()
 {
     echo -e "\E[34m***********************"
     echo "    usage:"
-    echo "        fig -s <search text> [-i] [-f <filter files text>]"
+    echo "        fig -s <search text> [-b <base directory>] [-i] [-f <filter files text>]"
     echo ""
     echo "    Options:"
+    echo "        -b <base directory> Defaults to current directory, but with htis option you can override the base directory to be used for the search."
     echo "        -s <search text> This is the text that will be grepped in the current directory and subdirectories."
     echo "        -f <filter files text> This will filter the files that are grepped. Only those file that contain the text in"
     echo "            their name will be grepped"
@@ -20,12 +21,16 @@ function syntax()
 # default is false
 IGNORE_CASE=1
 FILE_FILTER=""
+BASE_DIR="."
 
 echo ""
 
-while getopts "f:his:" OPTION
+while getopts "b:f:his:" OPTION
 do
      case $OPTION in
+         b)
+             BASE_DIR=${OPTARG}
+             ;;
          f)
              FILE_FILTER=${OPTARG}
              ;;
@@ -56,7 +61,7 @@ if [[ ! ${SEARCH_TERM} ]]; then
     exit 2
 fi
 
-CMD="find . -type f -print0 | xargs -0 -e grep"
+CMD="find ${BASE_DIR} -type f -print0 | xargs -0 -e grep"
 if [ ${IGNORE_CASE} == 0 ]; then
     CMD="${CMD} -i"
 fi

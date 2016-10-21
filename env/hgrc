@@ -1,9 +1,10 @@
 [ui]
 username=sparker
+merge=internal:merge
 
 [extensions]
 mercurial_keyring =
-review = /active/hg-review/review/
+#review = /active/hg-review/review/
 hgshelve=~/dev-env/hg/hgshelve.py
 fetch=
 hgext.graphlog=

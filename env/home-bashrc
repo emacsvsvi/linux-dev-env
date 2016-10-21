@@ -2,6 +2,8 @@
 
 # source in the bashrc saved in my dev-env repo.
 
+umask 0002
+
 if [ -f "$HOME/dev-env/env/bashrc" ] ; then
     source $HOME/dev-env/env/bashrc
 else
