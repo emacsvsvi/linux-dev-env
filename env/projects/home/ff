@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export PROJECT_NAME=findfiles
+export PROJECT_SHORT_NAME=ff
+
+export BUILD_DIR=/vagrant/data/repos/find-files
+#export DEPLOY_DIR=/media/cdata/deploy/${PROJECT_SHORT_NAME}
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export CASSANDRA_HOME=/vagrant/data/software/apache-cassandra-3.9
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${CASSANDRA_HOME}/bin PATH

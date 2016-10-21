@@ -23,11 +23,11 @@ done
 
 CURR_IFS=${IFS}
 
-if [ -f ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME} ]; then
+if [ -f ${DEV_HOME}/dev-env/env/projects/home/$1} ]; then
     IFS=
-    for x in `grep pathadd ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME}`;do eval `echo $x | sed 's/pathadd/pathrm/'`; done
+    for x in `grep pathadd ${DEV_HOME}/dev-env/env/projects/home/$1`;do eval `echo $x | sed 's/pathadd/pathrm/'`; done
     IFS=" "
-    unset `grep export ${DEV_HOME}/dev-env/env/projects/$1_${HOSTNAME} | awk '{print $2}' | awk 'BEGIN { FS = "=" } ; {print $1}' | xargs`
+    unset `grep export ${DEV_HOME}/dev-env/env/projects/home/$1 | awk '{print $2}' | awk 'BEGIN { FS = "=" } ; {print $1}' | xargs`
     IFS=${CURR_IFS}
 fi
 

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# At home project for starting cassandra
+# This is to be used within cygwin so tht it is running under windows
+# Downloaded from apache. Run bin/cassandra to start the server
+export PROJECT_NAME=cassandra
+export PROJECT_SHORT_NAME=cass
+
+export CASSANDRA_HOME=/home/sparker/vag/data/software/apache-cassandra-3.9
+export BUILD_DIR=${CASSANDRA_HOME}
+export JAVA_HOME='/c/Program Files/Java/jdk1.8.0_101'
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${CASSANDRA_HOME}/bin PATH
