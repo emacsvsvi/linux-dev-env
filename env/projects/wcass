@@ -10,6 +10,7 @@ export PROJECT_SHORT_NAME=wcass
 export CASSANDRA_HOME=/home/sparker/thirdparty/apache-cassandra-3.7
 export BUILD_DIR=${CASSANDRA_HOME}
 export JAVA_HOME=/active/java8
+export CQLSH_HOST=tuintlps41
 
 pathadd ${JAVA_HOME}/bin PATH
 pathadd ${CASSANDRA_HOME}/bin PATH
