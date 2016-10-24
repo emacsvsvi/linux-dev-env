@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# This environment is for a test project using Cassandra with iCRS, NGDL, and our Hadoop projects
+# Currently project is on ps40, using the Hadoop with a master on ps40
+# This project uses java8, Hadoop 2.7.1, Cassandra 3.7
+
+# Cassandra is running on ps41 and ps42. Updated cassandra.yaml, and then run using the cassandra
+# script under bin
+
+# The script cqlsh is used to interact with the DB
+
+# USE_CASSANDRA AND READ_CASSANDRA in the properties file determines if cassandra is used for updating
+# The env file wcass is used to assist in starting cassandra and the other cassandra tools 
+
+export PROJECT_NAME="Nessie"
+export PROJECT_SHORT_NAME=nessie
+
+export BUILD_DIR=~sparker/repos/nessie
+export DEPLOY_DIR=~sparker/deploy/nessie
+export BASE_DIR=${DEPLOY_DIR}
+export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.7.1
+export CASSANDRA_HOME=~/thirdparty/apache-cassandra-3.7
+
+export JAVA_HOME=/active/java8
+
+pathadd /active/java8/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH
+pathadd ${HADOOP_BASE_DIR}/bin PATH
+pathadd ${HADOOP_BASE_DIR}/sbin PATH
