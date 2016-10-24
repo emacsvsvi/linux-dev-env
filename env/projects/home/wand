@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# ANOTHER PROJECT WITH NO DOC
+# This was supposed to be able to use your phone like a wand
 export PROJECT_NAME=wand
 export PROJECT_SHORT_NAME=wand
 

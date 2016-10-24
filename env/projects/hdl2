@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This project if for NGDL Mexico
+
+# NEED TO ADD MORE DOC when used again
 export PROJECT_NAME="Hadoop-2 DL"
 export PROJECT_SHORT_NAME=hdl2
 

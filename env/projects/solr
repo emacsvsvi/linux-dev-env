@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This project if for express commercial. 
+
+# NEED TO ADD MORE DOC when used again
 export PROJECT_NAME="solr"
 export PROJECT_SHORT_NAME=solr
 

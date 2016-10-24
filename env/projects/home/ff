@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Project to start getting files and then all personal information organized across
+# all of a persons devices and internet footprint
+
+# This first service is to figure out all of the files on a particular device. This is 
+# done by searching through the device, and adding all of the file information to a cassandra
+# instance.
+
+# Cassandra needs to be running. Currently, this runs under windows. Run cassandra program from bin in the 
+# cassandra distribution. There is a cass environment file for doing this.
 export PROJECT_NAME=findfiles
 export PROJECT_SHORT_NAME=ff
 

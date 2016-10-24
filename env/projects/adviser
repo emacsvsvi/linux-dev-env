@@ -1,7 +1,10 @@
 #!/bin/bash
 
-export PROJECT_NAME="Adviser"
-export PROJECT_SHORT_NAME=adviser
+# This environment is for Adviser Hadoop (India version)
+# Currently project is on ps40, using the Hadoop with a master on ps40
+
+export PROJECT_NAME="Adviser India"
+export PROJECT_SHORT_NAME=adviser-in
 
 export BUILD_DIR=~/repos/adviser5
 export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.7.1

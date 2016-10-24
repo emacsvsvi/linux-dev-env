@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This is the environment to be used to do developement for android.
+# PLEASE UPDATE THIS NEXT TIME I USE THE ENV WITH MORE INFO ABOUT THE PROJECT
 export PROJECT_NAME=droid
 export PROJECT_SHORT_NAME=droid
 
