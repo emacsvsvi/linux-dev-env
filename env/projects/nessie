@@ -4,13 +4,14 @@
 # Currently project is on ps40, using the Hadoop with a master on ps40
 # This project uses java8, Hadoop 2.7.1, Cassandra 3.7
 
-# Cassandra is running on ps41 and ps42. Updated cassandra.yaml, and then run using the cassandra
+# Cassandra is running on ps41, ps42, and ps44. Updated cassandra.yaml, and then run using the cassandra
 # script under bin
 
 # The script cqlsh is used to interact with the DB
 
-# USE_CASSANDRA AND READ_CASSANDRA in the properties file determines if cassandra is used for updating
-# The env file wcass is used to assist in starting cassandra and the other cassandra tools 
+# USE_CASSANDRA and READ_CASSANDRA in the properties file determines if cassandra is used for updating
+# The env file wcass is used to assist in starting cassandra and the other cassandra tools. Cassandra 
+# currently needs to be started separately on each node.
 
 export PROJECT_NAME="Nessie"
 export PROJECT_SHORT_NAME=nessie
@@ -20,6 +21,7 @@ export DEPLOY_DIR=~sparker/deploy/nessie
 export BASE_DIR=${DEPLOY_DIR}
 export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.7.1
 export CASSANDRA_HOME=~/thirdparty/apache-cassandra-3.7
+export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf-2.7.1
 
 export JAVA_HOME=/active/java8
 
