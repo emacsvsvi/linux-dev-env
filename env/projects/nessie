@@ -5,7 +5,7 @@
 # This project uses java8, Hadoop 2.7.1, Cassandra 3.7
 
 # Cassandra is running on ps41, ps42, and ps44. Updated cassandra.yaml, and then run using the cassandra
-# script under bin
+# script under bin on each server
 
 # The script cqlsh is used to interact with the DB
 
@@ -29,3 +29,4 @@ pathadd /active/java8/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/sbin PATH
+pathadd ${CASSANDRA_HOME}/bin PATH
