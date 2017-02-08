@@ -33,6 +33,7 @@
 ;; Added this to try and get autocompletion to work for Java again.
 (require `auto-complete)
 (global-auto-complete-mode t)
+(ac-config-default)
 
 ;; buffer naming instead of <2> uses directory names.
 (require 'uniquify)

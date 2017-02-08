@@ -10,7 +10,7 @@ export BUILD_DIR=~/repos/ngdl
 export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
 export BASE_DIR=${DEPLOY_DIR}
 
-export JAVA_HOME=/active/java8
+export JAVA_HOME=/active/java
 export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf/
 
 pathadd ${JAVA_HOME}/bin PATH
