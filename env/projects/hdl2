@@ -7,12 +7,12 @@ export PROJECT_NAME="Hadoop-2 DL"
 export PROJECT_SHORT_NAME=hdl2
 
 export BUILD_DIR=~/repos/ngdl
-export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
+export DEPLOY_DIR=/opt/apache/hadoop/
 export BASE_DIR=${DEPLOY_DIR}
 
 export JAVA_HOME=/active/java
-export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf/
+export HADOOP_CONF_DIR=${DEPLOY_DIR}/hadoop-conf/
 
 pathadd ${JAVA_HOME}/bin PATH
-pathadd ${DEPLOY_DIR}/bin PATH
-pathadd ${DEPLOY_DIR}/sbin PATH
+pathadd ${DEPLOY_DIR}/hadoop-2.2.0/bin PATH
+pathadd ${DEPLOY_DIR}/hadoop-2.2.0/sbin PATH
