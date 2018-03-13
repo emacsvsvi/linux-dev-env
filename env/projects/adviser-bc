@@ -3,7 +3,7 @@
 # This environment is for Adviser Hadoop (Mexico version)
 # Currently project is on ps44, using the Hadoop with a master on ps40
 
-# Project uses the mx prefix for stuff in HDFS.
+# Project uses the mx prefix for stuff in HDFS. Setup is the same in Hadoop 2.7.1 and 2.2.0.
 
 # Scripts can be found in bin in DEPLOY_DIR
 #     bcadv : will install the latest Adviser web code to the tomcat instance
@@ -13,15 +13,15 @@ export PROJECT_NAME="Adviser BC"
 export PROJECT_SHORT_NAME=adviser
 
 export BUILD_DIR=~sparker/repos/adviser-bc
-export DEPLOY_DIR=~sparker/deploy/mx-adviser
+export DEPLOY_DIR=~sparker/deploy/adviser-bc
 export BASE_DIR=${DEPLOY_DIR}
-export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.7.1
+export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.2.0
 
-export JAVA_HOME=/active/java8
+export JAVA_HOME=/active/java6
 
 # if M2_HOME is set it can cause problems...
 unset M2_HOME
-pathadd /active/java8/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/sbin PATH

@@ -1,18 +1,23 @@
 #!/bin/bash
 
-# This project if for NGDL Mexico
+# This project is for NGDL Mexico
+# Currently uses Hadoop 2.2.0 with the master on ps40
 
-# NEED TO ADD MORE DOC when used again
+# Latest code is ps44
+# Web service (DEPLOY_DIR) is on ps40
+# scripts to deploy can be found in DEPLOY_DIR/bin
+
 export PROJECT_NAME="Hadoop-2 DL"
 export PROJECT_SHORT_NAME=hdl2
 
-export BUILD_DIR=~/repos/ngdl
-export DEPLOY_DIR=/opt/apache/hadoop/hadoop-2.2.0
-export BASE_DIR=${DEPLOY_DIR}
+export BUILD_DIR=/home/sparker/repos/ngdl-bc
+export DEPLOY_DIR=/home/sparker/deploy/ngdl-bc
+export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.2.0
 
-export JAVA_HOME=/active/java8
+export JAVA_HOME=/active/java6
 export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf/
 
 pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
-pathadd ${DEPLOY_DIR}/sbin PATH
+pathadd ${HADOOP_BASE_DIR}/bin PATH
+pathadd ${HADOOP_BASE_DIR}/sbin PATH
