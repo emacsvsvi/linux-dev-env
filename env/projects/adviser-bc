@@ -10,7 +10,7 @@
 #     dep-adv-mx : will deploy to Hadoop latest jars
 
 export PROJECT_NAME="Adviser BC"
-export PROJECT_SHORT_NAME=adviser
+export PROJECT_SHORT_NAME=adviser-bc
 
 export BUILD_DIR=~sparker/repos/adviser-bc
 export DEPLOY_DIR=~sparker/deploy/adviser-bc
@@ -25,3 +25,5 @@ pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/sbin PATH
+#pathadd /active/maven3/bin PATH
+pathadd /software/opt/common/apache-maven-3.2.3-artifactory/bin PATH
