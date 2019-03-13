@@ -1,0 +1,14 @@
+# name : getter/setter property ... { ... }
+# key: prop
+# --
+protected ${1:String} ${2:name};$0
+
+public $1 get${2:$(upcase-initials yas-text)}()
+{
+    return $2;
+}
+
+public void set${2:$(upcase-initials yas-text)}($1 value)
+{
+    this.$2 = value;
+}

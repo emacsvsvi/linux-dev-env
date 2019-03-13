@@ -10,6 +10,7 @@
 export PROJECT_NAME="Hadoop-2 DL"
 export PROJECT_SHORT_NAME=hdl2
 
+<<<<<<< HEAD
 export BUILD_DIR=/home/sparker/repos/ngdl-bc
 export DEPLOY_DIR=/home/sparker/deploy/ngdl-bc
 export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.2.0
@@ -21,3 +22,15 @@ pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/sbin PATH
+=======
+export BUILD_DIR=~/repos/ngdl
+export DEPLOY_DIR=/opt/apache/hadoop/
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/java
+export HADOOP_CONF_DIR=${DEPLOY_DIR}/hadoop-conf/
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${DEPLOY_DIR}/hadoop-2.2.0/bin PATH
+pathadd ${DEPLOY_DIR}/hadoop-2.2.0/sbin PATH
+>>>>>>> 261699abcb4b552ecf792a820356a0a483ddef33

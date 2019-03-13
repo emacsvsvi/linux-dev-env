@@ -20,13 +20,18 @@ export BUILD_DIR=~sparker/repos/nessie
 export DEPLOY_DIR=~sparker/deploy/nessie
 export BASE_DIR=${DEPLOY_DIR}
 export HADOOP_BASE_DIR=/opt/apache/hadoop/hadoop-2.7.1
-export CASSANDRA_HOME=~/thirdparty/apache-cassandra-3.7
+export CASSANDRA_HOME=/opt/apache/cassandra/apache-cassandra-3.7
 export HADOOP_CONF_DIR=/opt/apache/hadoop/hadoop-conf-2.7.1
+export CQLSH_HOST=tuintlps41
 
 export JAVA_HOME=/active/java8
+export PYTHONPATH=${PYTHONPATH}:/home/sparker/protobuf-python-out
+source protobuf-python/bin/activate
 
 pathadd /active/java8/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
+pathadd ${DEPLOY_DIR}/migration/tu-subject-model/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
 pathadd ${HADOOP_BASE_DIR}/sbin PATH
 pathadd ${CASSANDRA_HOME}/bin PATH
+pathadd /home/sparker/thirdparty/protobuf/bin PATH

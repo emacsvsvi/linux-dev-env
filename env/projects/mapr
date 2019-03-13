@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This environment is for a test project using MAPR
+# Currently project is on ps44, using the Hadoop cluster on ps42, ps43, and ps44. See MAPR console to see which server is running resource manager
+# This project uses java8, MAPR 6.0.1
+
+export PROJECT_NAME="MAPR POC"
+export PROJECT_SHORT_NAME=mapr
+
+export BUILD_DIR=~sparker/repos/nessie
+export DEPLOY_DIR=~sparker/deploy/nessie
+export BASE_DIR=${DEPLOY_DIR}
+export HADOOP_BASE_DIR=/opt/mapr/hadoop/hadoop-2.7.0/
+export HADOOP_CONF_DIR=/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop
+
+export JAVA_HOME=/active/java8
+
+pathadd /active/java8/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH
+pathadd ${DEPLOY_DIR}/migration/tu-subject-model/bin PATH
+pathadd ${HADOOP_BASE_DIR}/bin PATH
+pathadd ${HADOOP_BASE_DIR}/sbin PATH
