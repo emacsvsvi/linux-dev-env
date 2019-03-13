@@ -27,8 +27,9 @@ export CQLSH_HOST=tuintlps41
 export JAVA_HOME=/active/java8
 export PYTHONPATH=${PYTHONPATH}:/home/sparker/protobuf-python-out
 source protobuf-python/bin/activate
+source /active/maven-artifactory/maven.env
 
-pathadd /active/java8/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${DEPLOY_DIR}/migration/tu-subject-model/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH
