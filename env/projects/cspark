@@ -9,7 +9,7 @@ export PROJECT_SHORT_NAME=cspark
 
 export BUILD_DIR=~sparker/spark/colombia/wwd-delivery
 export DEPLOY_DIR=~sparker/spark
-export PYTHON_VENV_DIR ~sparker/python3-env-spark
+export PYTHON_VENV_DIR=~sparker/python3-env-spark
 
 source ${PYTHON_VENV_DIR}/bin/activate
 export HADOOP_CONF_DIR=/home/sparker/spark/colombia/wwd-delivery/hadoop-conf
