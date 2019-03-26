@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This environment is for running spark.
+# First used with the code from WWD for Colombia
+
+
+export PROJECT_NAME="Colombia Spark"
+export PROJECT_SHORT_NAME=cspark
+
+export BUILD_DIR=~sparker/spark/colombia/wwd-delivery
+export DEPLOY_DIR=~sparker/spark
+export PYTHON_VENV_DIR ~sparker/python3-env-spark
+
+source ${PYTHON_VENV_DIR}/bin/activate
+export HADOOP_CONF_DIR=/home/sparker/spark/colombia/wwd-delivery/hadoop-conf
+export JAVA_HOME=/active/java8
+export PYSPARK_PYTHON=${PYTHON_VENV_DIR}/bin/python
+
