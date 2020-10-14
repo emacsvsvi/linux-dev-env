@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export PROJECT_NAME="GRPC8"
+export PROJECT_SHORT_NAME=grpc8
+
+export BUILD_DIR=~sparker/repos
+export DEPLOY_DIR=~sparker/deploy
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/java
+# export PYTHONPATH=${PYTHONPATH}:/home/sparker/protobuf-python-out
+# source protobuf-python/bin/activate
+source /active/maven-artifactory/maven.env
+
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH
+pathadd /home/sparker/thirdparty/grpcurl/ PATH
+
+# pathadd /home/sparker/thirdparty/protobuf/bin PATH

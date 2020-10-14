@@ -13,9 +13,10 @@ export BASE_DIR=${DEPLOY_DIR}
 export HADOOP_BASE_DIR=/opt/mapr/hadoop/hadoop-2.7.0/
 export HADOOP_CONF_DIR=/opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop
 
-export JAVA_HOME=/active/java8
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/
+#export JAVA_HOME=/active/java8
 
-pathadd /active/java8/bin PATH
+pathadd ${JAVA_HOME}/bin PATH
 pathadd ${DEPLOY_DIR}/bin PATH
 pathadd ${DEPLOY_DIR}/migration/tu-subject-model/bin PATH
 pathadd ${HADOOP_BASE_DIR}/bin PATH

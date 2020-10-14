@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This environment is for the projects associated with splitting Adviser into pieces
+# This project uses java8
+
+export PROJECT_NAME="hawk"
+export PROJECT_SHORT_NAME=hawk
+
+export BUILD_DIR=~sparker/repos/hawk
+export DEPLOY_DIR=~sparker/deploy/hawk
+export BASE_DIR=${DEPLOY_DIR}
+
+export JAVA_HOME=/active/java8
+#export PYTHONPATH=${PYTHONPATH}:/home/sparker/protobuf-python-out # we need this if we start to use python with our PB
+#source /active/
+source /active/maven-artifactory/maven.env
+
+pathadd /home/sparker/thirdparty/evans PATH
+pathadd ${JAVA_HOME}/bin PATH
+pathadd ${DEPLOY_DIR}/bin PATH
+pathadd /home/sparker/thirdparty/protobuf/bin PATH
